@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
+const User = require('./models/User')
 
 mongoose.connect('mongodb://127.0.0.1/mongoose1503',{
-    'useNewUrlParser': true
+    'useNewUrlParser': true,
+    'useCreateIndex': true
 });
 mongoose.connection
 .then(()=>{
@@ -9,21 +11,28 @@ mongoose.connection
 })
 .catch(err=>console.log(err.message))
 
-const Schema = mongoose.Schema
-const UserSchema = new Schema({
-    username: {
-        type:String,
-        unique: true,
-        require:true
-    },
-    password : {
-        type : String,
-        require:true
-    },
-    birthdate: Date,
-    phone:{
-        type: String,
-        default: '098754321'
-    }
-})
-const User = mongoose.model('user',UserSchema)
+//insert
+// User.create({
+//     username: 'manager',
+//     password: '9876543',
+//     birthdate: new Date(),
+//     phone: '492002575'
+// }).then(user=>console.log(user))
+// .catch(err=>console.log(err.message))
+
+// const user = new User({
+//     username: 'guest04',
+//     password: '9876543',
+// }).save(err=>{
+//     if(err) return console.log(err.message)
+// })
+
+
+/**
+ * Create collection
+ * Insert
+ * Select
+ * Update
+ * Delete
+ */
+
