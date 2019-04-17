@@ -72,18 +72,57 @@ mongoose.connection
 // SELECT * FROM users 
 // WHERE (username='guest' OR username='admin') 
 // AND password = '9876543'
+// User.find({
+//     $or :[ {
+//         username:'admin'
+//     },{
+//         username:'guest'
+//     }],
+//     password: {
+//         $eq : '9876543'
+//     }
+// })
+// .then(users=>console.log(users))
+// .catch(err=>console.log(err))
+
+// LIKE: $regex: ....  username LIKE 'guest%'
+// User.find({
+//     username:{
+//         $regex: /^guest/
+//     }
+// })
+// .then(users=>console.log(users))
+// .catch(err=>console.log(err))
+
+// LIKE: $regex: ....  username LIKE '%guest'
+
+// User.find({
+//     username:{
+//         $regex: /guest$/
+//     }
+// })
+// .then(users=>console.log(users))
+// .catch(err=>console.log(err))
+
+// User.find({
+//     username:{
+//         $regex: /^guest02$/
+//     }
+// })
+// .then(users=>console.log(users))
+// .catch(err=>console.log(err))
+
+// LIKE: $regex: ....  username LIKE '%guest%'
 User.find({
-    $or :[ {
-        username:'admin'
-    },{
-        username:'guest'
-    }],
-    password: {
-        $eq : '9876543'
+    username:{
+        $regex: /guest/
     }
 })
 .then(users=>console.log(users))
 .catch(err=>console.log(err))
+
+// sort
+// SELECT username, password FROM ....
 
 /**
  * Create collection
