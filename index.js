@@ -113,17 +113,68 @@ mongoose.connection
 // .catch(err=>console.log(err))
 
 // LIKE: $regex: ....  username LIKE '%guest%'
-User.find({
-    username:{
-        $regex: /guest/
-    }
-})
-.then(users=>console.log(users))
-.catch(err=>console.log(err))
+// SELECT username FROM users
+// WHERE username LIKE '%guest%'
+// LIMIT 1,2
+// User.find({
+//     username:{
+//         $regex: /guest/
+//     }
+// },{username:1, _id:0})
+// .sort({username:-1}) // desc
+// .skip(1)
+// .limit(2) // 1,2
+// .then(users=>console.log(users))
+// .catch(err=>console.log(err))
 
 // sort
 // SELECT username, password FROM ....
+// User.find({
+//     username:{
+//         $regex: /guest/
+//     },
+//     // totalAmount: { $sum : 'phone' }
+// }).countDocuments()
+// .then(number=>console.log(number))
+// .catch(err=>console.log(err))
 
+// Update
+//ObjectId("5cb0850814ee8b08279cb2cd")
+User.findByIdAndUpdate('5cb0850814ee8b08279cb2cd',{
+    username: 'hoa_nguyen_1232345'
+},{new : true})
+// .then(user=>console.log(user))
+// .catch(err=>console.log(err))
+
+// User.findOne({username : 'hoa_nguyen'})
+// .update({
+//     username: 'hoa_nguyen_1232345'
+// },(err,rows)=>{
+//     if(err) return;
+//     console.log(rows)
+// })
+// .then(user=>console.log(user))
+// .catch(err=>console.log('Error:'+err))
+
+// User.update({
+//     username : 'hoa_nguyen'
+// },{
+//     username: 'hoa_nguyen_1232345' 
+// })
+// User.updateMany({ username : 'hoa_nguyen'},{
+//     username: 'hoa_nguyen_1232345' 
+// })
+// updateOne
+
+// User.findByIdAndRemove('5cb0850814ee8b08279cb2cd')
+// .then(user=>console.log(user))
+// .catch(err=>console.log('Error:'+err))
+
+// User.findOneAndDelete({_id:'5cb0850814ee8b08279cb2cd'})
+// .then(user=>console.log(user))
+// .catch(err=>console.log('Error:'+err))
+ 
+// User.deleteOne
 /**
  * Create collection
  * Insert one/ insert many
